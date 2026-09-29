@@ -1,7 +1,7 @@
 {
   "name": "Dreamy Oracle Tarot — คำทำนายไพ่ทาโรต์",
   "short_name": "Oracle Tarot",
-  "description": "ห้องออราเคิล + ภาพ Rider–Waite–Smith สาธารณสมบัติ — คำทำนาย V1.2.0",
+  "description": "ห้องออราเคิล + ภาพ Rider–Waite–Smith สาธารณสมบัติ — คำทำนาย V1.2.1",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

@@ -4,15 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#2a1848" />
-  <meta name="description" content="Dreamy Oracle Tarot — คำทำนายไพ่ทาโรต์ พร้อมภาพ Rider–Waite–Smith สาธารณสมบัติ V1.2.0" />
+  <meta name="description" content="Dreamy Oracle Tarot — คำทำนายไพ่ทาโรต์ พร้อมภาพ Rider–Waite–Smith สาธารณสมบัติ V1.2.1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Oracle Tarot" />
   <meta name="mobile-web-app-capable" content="yes" />
+  <base href="./" />
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="apple-touch-icon" href="./icon-192.png" />
-  <title>Dreamy Oracle Tarot V1.2.0 — คำทำนายไพ่ทาโรต์</title>
+  <title>Dreamy Oracle Tarot V1.2.1 — คำทำนายไพ่ทาโรต์</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -217,53 +218,89 @@
     }
 
     .card {
-      width: 100%; aspect-ratio: 2 / 3.5; max-width: 140px;
-      perspective: 1200px; cursor: pointer; user-select: none; -webkit-user-select: none;
-      filter: drop-shadow(0 12px 22px rgba(8, 2, 24, 0.6));
+      width: 100%;
+      max-width: 140px;
+      aspect-ratio: 2 / 3.5;
+      position: relative;
+      perspective: 1200px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      filter: drop-shadow(0 12px 22px rgba(8, 2, 24, 0.55));
     }
     .spread.single .card { max-width: 168px; }
     .card-inner {
-      position: relative; width: 100%; height: 100%; transform-style: preserve-3d;
-      transition: transform 0.9s cubic-bezier(0.4, 0.1, 0.2, 1); border-radius: 10px;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      transition: transform 0.85s cubic-bezier(0.4, 0.1, 0.2, 1);
+      border-radius: 10px;
     }
     .card.flipped .card-inner { transform: rotateY(180deg); }
     .card.reversed.flipped .card-inner { transform: rotateY(180deg) rotateZ(180deg); }
     .face {
-      position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-      border-radius: 10px; overflow: hidden;
+      position: absolute;
+      inset: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
     .face.back {
+      background: #1a1030 center / cover no-repeat;
       border: 1.5px solid rgba(201, 182, 228, 0.5);
       box-shadow: 0 0 22px rgba(140, 100, 220, 0.35);
-      background: #1a1030;
+      transform: rotateY(0deg);
     }
-    .face.back img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .face.front {
-      transform: rotateY(180deg);
       background: #f4ecd8;
-      border: 2px solid rgba(200, 170, 120, 0.65);
-      box-shadow: 0 0 24px rgba(180, 140, 220, 0.3), inset 0 0 0 1px rgba(255,255,255,0.35);
-      display: flex; flex-direction: column; padding: 0;
+      border: 2px solid rgba(200, 170, 120, 0.7);
+      box-shadow: 0 0 24px rgba(180, 140, 220, 0.28);
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
     }
+    /* Art MUST have explicit flex basis so it cannot collapse to a pill on mobile */
     .face.front .art {
-      flex: 1 1 auto; min-height: 0; height: 100%; position: relative; background: #1a1020;
-      margin: 5px 5px 0; border-radius: 4px; overflow: hidden;
-      box-shadow: inset 0 0 0 1px rgba(80, 50, 30, 0.25);
+      flex: 1 1 0;
+      min-height: 70%;
+      position: relative;
+      margin: 6px 6px 0;
+      border-radius: 5px;
+      overflow: hidden;
+      background-color: #2a1848;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-size: cover;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
     }
     .face.front .art img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%; object-fit: cover; object-position: center top;
-      display: block; background: #2a1848;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border: 0;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
     }
     .face.front .caption {
-      flex-shrink: 0; padding: 4px 5px 5px; text-align: center;
+      flex: 0 0 auto;
+      padding: 5px 6px 6px;
+      text-align: center;
       background: linear-gradient(180deg, #f7f0e4, #ebe0cc);
     }
     .face.front .name-th {
-      font-size: 0.58rem; font-weight: 600; line-height: 1.2; color: #3a2458;
+      font-size: 0.6rem; font-weight: 600; line-height: 1.2; color: #3a2458;
     }
     .face.front .name-en {
-      font-size: 0.48rem; font-weight: 400; color: #7a6498; line-height: 1.15;
+      font-size: 0.5rem; font-weight: 400; color: #7a6498; line-height: 1.15;
     }
     .card-kw {
       font-size: 0.68rem; font-weight: 500; color: var(--rose);
@@ -311,8 +348,8 @@
       width: 96px; height: 158px; border-radius: 12px; overflow: hidden; margin: 16px auto;
       border: 1.5px solid rgba(201, 182, 228, 0.4);
       box-shadow: 0 0 36px rgba(140, 100, 220, 0.28); opacity: 0.85;
+      background: #1a1030 center / cover no-repeat;
     }
-    .empty-deck img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .disclaimer {
       text-align: center; font-size: 0.72rem; font-weight: 300; color: var(--muted);
@@ -381,7 +418,7 @@
     <section class="meanings" id="meanings"></section>
 
     <p class="disclaimer">เพื่อความบันเทิง / สะท้อนคิด — ไม่ใช่คำแนะนำทางการแพทย์ กฎหมาย หรือการเงิน</p>
-    <p class="ver">V1.2.0 · คำทำนายออราเคิล · RWS PD art · Kanit</p>
+    <p class="ver">V1.2.1 · คำทำนายออราเคิล · RWS PD art · Kanit</p>
   </div>
 
   <script src="./cards.js"></script>
@@ -406,8 +443,13 @@
       let currentDraw = [];
       let lastQuestion = '';
 
-      const BACK_URL = './cards/rws/back.jpg';
-      emptyState.innerHTML = '<img alt="card back" src="' + BACK_URL + '" width="96" height="158" />';
+      function assetUrl(rel) {
+        // Resolve against document base so Paths work with/without trailing slash & under SW
+        return new URL(rel.replace(/^\.\//, ''), document.baseURI).href;
+      }
+      const BACK_URL = assetUrl('cards/rws/back.jpg');
+      emptyState.style.background = 'center / cover no-repeat url("' + BACK_URL + '")';
+      emptyState.innerHTML = '';
 
       modeBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
@@ -465,7 +507,7 @@
       }
 
       function cardImgPath(card) {
-        return './cards/rws/' + card.id + '.jpg';
+        return assetUrl('cards/rws/' + card.id + '.jpg');
       }
 
       function buildCardEl(item, index) {
@@ -482,29 +524,26 @@
         cardEl.setAttribute('aria-label', 'พลิกไพ่ ' + item.position);
         cardEl.dataset.index = String(index);
 
-        const img = document.createElement('img');
-        img.alt = card.nameTh + ' — ' + card.name;
-        img.decoding = 'async';
-        img.loading = 'eager';
-        img.src = faceUrl;
-        img.onerror = function () {
-          console.error('card image failed', faceUrl);
-          this.style.background = '#4a3070';
-          this.alt = 'โหลดภาพไม่สำเร็จ';
-        };
-
+        // Dual strategy: CSS background-image (Safari 3D-safe) + <img> fallback
         cardEl.innerHTML =
           '<div class="card-inner">' +
-            '<div class="face back"><img alt="" src="' + BACK_URL + '" /></div>' +
+            '<div class="face back" style="background-image:url(\'' + BACK_URL + '\')"></div>' +
             '<div class="face front">' +
-              '<div class="art"></div>' +
+              '<div class="art" style="background-image:url(\'' + faceUrl + '\')">' +
+                '<img alt="' + card.nameTh + ' — ' + card.name + '" src="' + faceUrl + '" decoding="async" />' +
+              '</div>' +
               '<div class="caption">' +
                 '<div class="name-th">' + card.nameTh + '</div>' +
                 '<div class="name-en">' + card.name + '</div>' +
               '</div>' +
             '</div>' +
           '</div>';
-        cardEl.querySelector('.art').appendChild(img);
+
+        const img = cardEl.querySelector('.art img');
+        img.onerror = function () {
+          console.error('card image failed', faceUrl);
+          this.style.display = 'none';
+        };
 
         slot.appendChild(cardEl);
         const kw = document.createElement('div');
@@ -562,6 +601,7 @@
         if (drawing) return;
         drawing = true;
         drawBtn.disabled = true;
+        try {
         meaningsEl.innerHTML = '';
         document.getElementById('readingOut').innerHTML = '';
         lastQuestion = (questionInput.value || '').trim();
@@ -604,15 +644,39 @@
         });
         showReading(currentDraw, lastQuestion);
         hintEl.textContent = 'จั่วอีกครั้งเมื่อพร้อมถามสิ่งใหม่';
+      } catch (err) {
+        console.error(err);
+        hintEl.textContent = 'เกิดข้อผิดพลาด — ลองจั่วอีกครั้ง';
+      } finally {
         drawing = false;
         drawBtn.disabled = false;
+        document.getElementById('veil')?.classList.remove('show');
+      }
       }
 
       drawBtn.addEventListener('click', doDraw);
 
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js').catch(() => {});
+          navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then((reg) => {
+            reg.update().catch(() => {});
+            if (reg.waiting) reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+            reg.addEventListener('updatefound', () => {
+              const nw = reg.installing;
+              if (!nw) return;
+              nw.addEventListener('statechange', () => {
+                if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+                  nw.postMessage({ type: 'SKIP_WAITING' });
+                }
+              });
+            });
+          }).catch(() => {});
+          let refreshing = false;
+          navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (refreshing) return;
+            refreshing = true;
+            location.reload();
+          });
         });
       }
     })();
