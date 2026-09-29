@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#2a1848" />
-  <meta name="description" content="Dreamy Oracle Tarot — คำทำนายไพ่ทาโรต์นุ่มฝัน จั่ว 1 หรือ 3 ใบ V1.1.0" />
+  <meta name="description" content="Dreamy Oracle Tarot — คำทำนายไพ่ทาโรต์ พร้อมภาพ Rider–Waite–Smith สาธารณสมบัติ V1.2.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Oracle Tarot" />
@@ -12,7 +12,7 @@
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="apple-touch-icon" href="./icon-192.png" />
-  <title>Dreamy Oracle Tarot V1.1.0 — คำทำนายไพ่ทาโรต์</title>
+  <title>Dreamy Oracle Tarot V1.2.0 — คำทำนายไพ่ทาโรต์</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -209,58 +209,61 @@
       width: 100%; flex-wrap: nowrap; padding: 4px 0;
     }
     .spread.single { justify-content: center; }
-    .slot { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; max-width: 132px; }
-    .spread.single .slot { max-width: 156px; flex: 0 0 auto; }
+    .slot { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; max-width: 140px; }
+    .spread.single .slot { max-width: 168px; flex: 0 0 auto; }
     .slot-label {
       font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em;
       color: var(--lavender); text-align: center; opacity: 0.92;
     }
 
     .card {
-      width: 100%; aspect-ratio: 2 / 3.4; max-width: 132px;
+      width: 100%; aspect-ratio: 2 / 3.5; max-width: 140px;
       perspective: 1200px; cursor: pointer; user-select: none; -webkit-user-select: none;
-      filter: drop-shadow(0 10px 18px rgba(8, 2, 24, 0.55));
+      filter: drop-shadow(0 12px 22px rgba(8, 2, 24, 0.6));
     }
-    .spread.single .card { max-width: 156px; }
+    .spread.single .card { max-width: 168px; }
     .card-inner {
       position: relative; width: 100%; height: 100%; transform-style: preserve-3d;
-      transition: transform 0.9s cubic-bezier(0.4, 0.1, 0.2, 1); border-radius: 12px;
+      transition: transform 0.9s cubic-bezier(0.4, 0.1, 0.2, 1); border-radius: 10px;
     }
     .card.flipped .card-inner { transform: rotateY(180deg); }
     .card.reversed.flipped .card-inner { transform: rotateY(180deg) rotateZ(180deg); }
     .face {
       position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-      border-radius: 12px; overflow: hidden;
+      border-radius: 10px; overflow: hidden;
     }
     .face.back {
-      border: 1.5px solid rgba(201, 182, 228, 0.45);
-      box-shadow: 0 0 22px rgba(140, 100, 220, 0.35), inset 0 0 30px rgba(180, 140, 255, 0.1);
+      border: 1.5px solid rgba(201, 182, 228, 0.5);
+      box-shadow: 0 0 22px rgba(140, 100, 220, 0.35);
+      background: #1a1030;
     }
     .face.back img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .face.front {
       transform: rotateY(180deg);
-      background: linear-gradient(180deg, #f6effa 0%, #e8dcee 100%);
-      border: 1.5px solid rgba(180, 150, 210, 0.55);
-      box-shadow: 0 0 24px rgba(180, 140, 220, 0.28);
-      color: #2a1848; display: flex; flex-direction: column; padding: 6px 5px 5px;
-    }
-    .face.front .num {
-      font-size: 0.58rem; font-weight: 600; letter-spacing: 0.04em;
-      color: #6a5088; text-align: center; flex-shrink: 0;
+      background: #f4ecd8;
+      border: 2px solid rgba(200, 170, 120, 0.65);
+      box-shadow: 0 0 24px rgba(180, 140, 220, 0.3), inset 0 0 0 1px rgba(255,255,255,0.35);
+      display: flex; flex-direction: column; padding: 0;
     }
     .face.front .art {
-      flex: 1; margin: 3px 0; border-radius: 8px; overflow: hidden;
-      position: relative; min-height: 0;
-      box-shadow: inset 0 0 12px rgba(60, 30, 90, 0.15);
+      flex: 1 1 auto; min-height: 0; height: 100%; position: relative; background: #1a1020;
+      margin: 5px 5px 0; border-radius: 4px; overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(80, 50, 30, 0.25);
     }
     .face.front .art img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      display: block; background: #2a1848;
+    }
+    .face.front .caption {
+      flex-shrink: 0; padding: 4px 5px 5px; text-align: center;
+      background: linear-gradient(180deg, #f7f0e4, #ebe0cc);
     }
     .face.front .name-th {
-      font-size: 0.6rem; font-weight: 600; text-align: center; line-height: 1.2; color: #3a2458;
+      font-size: 0.58rem; font-weight: 600; line-height: 1.2; color: #3a2458;
     }
     .face.front .name-en {
-      font-size: 0.5rem; font-weight: 400; text-align: center; color: #7a6498; line-height: 1.15;
+      font-size: 0.48rem; font-weight: 400; color: #7a6498; line-height: 1.15;
     }
     .card-kw {
       font-size: 0.68rem; font-weight: 500; color: var(--rose);
@@ -378,12 +381,11 @@
     <section class="meanings" id="meanings"></section>
 
     <p class="disclaimer">เพื่อความบันเทิง / สะท้อนคิด — ไม่ใช่คำแนะนำทางการแพทย์ กฎหมาย หรือการเงิน</p>
-    <p class="ver">V1.1.0 · คำทำนายออราเคิล · painterly cards · Kanit</p>
+    <p class="ver">V1.2.0 · คำทำนายออราเคิล · RWS PD art · Kanit</p>
   </div>
 
   <script src="./cards.js"></script>
   <script src="./reading.js"></script>
-  <script src="./art.js"></script>
   <script>
     (function () {
       const POS_LABELS = { 1: ['ไพ่ของคุณ'], 3: ['อดีต', 'ปัจจุบัน', 'อนาคต'] };
@@ -404,8 +406,8 @@
       let currentDraw = [];
       let lastQuestion = '';
 
-      const BACK_URL = window.OracleArt.renderBack(300, 510);
-      emptyState.innerHTML = '<img alt="" src="' + BACK_URL + '" />';
+      const BACK_URL = './cards/rws/back.jpg';
+      emptyState.innerHTML = '<img alt="card back" src="' + BACK_URL + '" width="96" height="158" />';
 
       modeBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
@@ -462,9 +464,13 @@
         await sleep(280);
       }
 
+      function cardImgPath(card) {
+        return './cards/rws/' + card.id + '.jpg';
+      }
+
       function buildCardEl(item, index) {
         const { card, reversed } = item;
-        const faceUrl = window.OracleArt.renderFace(card, 280, 360);
+        const faceUrl = cardImgPath(card);
         const slot = document.createElement('div');
         slot.className = 'slot';
         slot.innerHTML = '<div class="slot-label">' + item.position + '</div>';
@@ -476,16 +482,29 @@
         cardEl.setAttribute('aria-label', 'พลิกไพ่ ' + item.position);
         cardEl.dataset.index = String(index);
 
+        const img = document.createElement('img');
+        img.alt = card.nameTh + ' — ' + card.name;
+        img.decoding = 'async';
+        img.loading = 'eager';
+        img.src = faceUrl;
+        img.onerror = function () {
+          console.error('card image failed', faceUrl);
+          this.style.background = '#4a3070';
+          this.alt = 'โหลดภาพไม่สำเร็จ';
+        };
+
         cardEl.innerHTML =
           '<div class="card-inner">' +
             '<div class="face back"><img alt="" src="' + BACK_URL + '" /></div>' +
             '<div class="face front">' +
-              '<div class="num">' + (card.num || '') + (card.suitTh ? ' · ' + card.suitTh : ' · Major') + '</div>' +
-              '<div class="art"><img alt="" src="' + faceUrl + '" /></div>' +
-              '<div class="name-th">' + card.nameTh + '</div>' +
-              '<div class="name-en">' + card.name + '</div>' +
+              '<div class="art"></div>' +
+              '<div class="caption">' +
+                '<div class="name-th">' + card.nameTh + '</div>' +
+                '<div class="name-en">' + card.name + '</div>' +
+              '</div>' +
             '</div>' +
           '</div>';
+        cardEl.querySelector('.art').appendChild(img);
 
         slot.appendChild(cardEl);
         const kw = document.createElement('div');
