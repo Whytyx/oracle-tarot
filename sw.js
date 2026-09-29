@@ -1,4 +1,4 @@
-const CACHE = 'oracle-tarot-v1.2.2';
+const CACHE = 'oracle-tarot-v1.2.3';
 const SHELL = [
   './',
   './index.html',
