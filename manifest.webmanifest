@@ -1,12 +1,12 @@
 {
-  "name": "Dreamy Oracle Tarot — ดูดวงไพ่ทาโรต์",
+  "name": "Dreamy Oracle Tarot — คำทำนายไพ่ทาโรต์",
   "short_name": "Oracle Tarot",
-  "description": "ไพ่ออราเคิลนุ่มฝัน — จั่ว 1 หรือ 3 ใบ อดีต/ปัจจุบัน/อนาคต V1.0.0",
+  "description": "ห้องออราเคิลนุ่มฝัน — คิดคำถาม จั่วไพ่ รับคำทำนาย V1.1.0",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#1a1028",
+  "background_color": "#0e0618",
   "theme_color": "#2a1848",
   "lang": "th",
   "icons": [

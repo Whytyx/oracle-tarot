@@ -1,8 +1,10 @@
-const CACHE = 'oracle-tarot-v1.0.0';
+const CACHE = 'oracle-tarot-v1.1.0';
 const ASSETS = [
   './',
   './index.html',
   './cards.js',
+  './reading.js',
+  './art.js',
   './manifest.webmanifest',
   './icon-192.png',
   './icon-512.png'
