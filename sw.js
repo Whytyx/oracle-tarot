@@ -1,4 +1,4 @@
-const CACHE = 'oracle-tarot-v1.2.1';
+const CACHE = 'oracle-tarot-v1.2.2';
 const SHELL = [
   './',
   './index.html',
@@ -34,7 +34,6 @@ self.addEventListener('fetch', (e) => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   const isCard = url.pathname.includes('/cards/rws/');
-  // Network-first for HTML/JS/SW so phone always gets latest shell; cache-first for card JPEGs
   const isShell = /\.(html|js|webmanifest)$/.test(url.pathname) || url.pathname.endsWith('/oracle-tarot/') || url.pathname.endsWith('/oracle-tarot');
 
   if (isShell) {
